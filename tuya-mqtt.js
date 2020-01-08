@@ -1,3 +1,5 @@
+const fs = require('fs');
+const path = require('path');
 const mqtt = require('mqtt');
 const TuyaDevice = require('./tuya-device');
 const debug = require('debug')('TuyAPI:mqtt');
@@ -35,8 +37,11 @@ if (typeof CONFIG.retain == "undefined") {
 const mqtt_client = mqtt.connect({
     host: CONFIG.host,
     port: CONFIG.port,
-    username: CONFIG.mqtt_user,
-    password: CONFIG.mqtt_pass,
+    key: fs.readFileSync(path.join(__dirname, CONFIG.key)),
+    cert: fs.readFileSync(path.join(__dirname, CONFIG.cert)),
+    rejectUnauthorized: true,
+    ca: fs.readFileSync(path.join(__dirname, CONFIG.rootca)),
+    protocol: 'mqtts'
 });
 
 mqtt_client.on('connect', function (err) {

@@ -1,8 +1,9 @@
 {
-    "host": "localhost",
-    "port": 1883,
+    "host": "example.amazonaws.com",
+    "port": 8883,
     "topic": "tuya/",
-    "mqtt_user": "",
-    "mqtt_pass": "",
-    "qos": 2
+    "qos": 0,
+    "rootca": "cert/amazon-root-ca.pem",
+    "cert": "cert/example-certificate.pem.crt",
+    "key": "cert/example-private.pem.key"
 }

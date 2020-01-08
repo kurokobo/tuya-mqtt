@@ -1,6 +1,9 @@
 devices/
 test/
 config.json
+*.key
+*.crt
+*.pem
 
 # Logs
 logs
